@@ -4,7 +4,7 @@ import {
   View,
   StyleSheet
 } from 'react-native';
-import {Agenda} from 'react-native-calendars';
+import {Agenda} from '../../../src';
 
 export default class AgendaScreen extends Component {
   constructor(props) {
@@ -19,10 +19,10 @@ export default class AgendaScreen extends Component {
       <Agenda
         items={this.state.items}
         loadItemsForMonth={this.loadItems.bind(this)}
-        selected={'2017-05-16'}
         renderItem={this.renderItem.bind(this)}
         renderEmptyDate={this.renderEmptyDate.bind(this)}
         rowHasChanged={this.rowHasChanged.bind(this)}
+        displayCalendarScrollable
         // markingType={'period'}
         // markedDates={{
         //    '2017-05-08': {textColor: '#666'},

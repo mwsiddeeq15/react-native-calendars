@@ -82,7 +82,9 @@ export default class AgendaView extends Component {
     /** Set this true while waiting for new data from a refresh. */
     refreshing: PropTypes.bool,
     /** Display loading indicador. Default = false */
-    displayLoadingIndicator: PropTypes.bool
+    displayLoadingIndicator: PropTypes.bool,
+    /** Display full calendar by default. Default = false */
+    displayCalendarScrollable: PropTypes.bool
   };
 
   constructor(props) {
@@ -99,7 +101,7 @@ export default class AgendaView extends Component {
     this.state = {
       scrollY: new Animated.Value(0),
       calendarIsReady: false,
-      calendarScrollable: false,
+      calendarScrollable: Boolean(props.displayCalendarScrollable),
       firstResevationLoad: false,
       selectedDay: parseDate(this.props.selected) || XDate(true),
       topDay: parseDate(this.props.selected) || XDate(true),
@@ -133,7 +135,7 @@ export default class AgendaView extends Component {
     // When user touches knob, the actual component that receives touch events is a ScrollView.
     // It needs to be scrolled to the bottom, so that when user moves finger downwards,
     // scroll position actually changes (it would stay at 0, when scrolled to the top).
-    this.setScrollPadPosition(this.initialScrollPadPosition(), false);
+    this.setScrollPadPosition(Boolean(this.props.displayCalendarScrollable) ? 0 : this.initialScrollPadPosition(), false);
     // delay rendering calendar in full height because otherwise it still flickers sometimes
     setTimeout(() => this.setState({calendarIsReady: true}), 0);
   }
