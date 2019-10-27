@@ -32,7 +32,16 @@ export default function styleConstructor(theme = {}) {
       alignItems: 'center',
       backgroundColor: appStyle.calendarBackground
     },
+    monthText: {
+      fontSize: appStyle.textMonthFontSize,
+      fontFamily: appStyle.textMonthFontFamily,
+      fontWeight: appStyle.textMonthFontWeight,
+      color: appStyle.monthTextColor,
+      marginBottom: 10,
+      textAlign: 'center'
+    },
     weekday: {
+      flex: 1,
       width: 32,
       textAlign: 'center',
       color: appStyle.textSectionTitleColor,
@@ -42,7 +51,7 @@ export default function styleConstructor(theme = {}) {
     },
     reservations: {
       flex: 1,
-      marginTop: 104,
+      marginTop: 132, // HEADER_HEIGHT
       backgroundColor: appStyle.backgroundColor
     },
     ...(theme[STYLESHEET_ID] || {})

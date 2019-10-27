@@ -1,5 +1,6 @@
 import {StyleSheet, Platform} from 'react-native';
 import * as defaultStyle from '../../../style';
+import { white } from 'ansi-colors';
 
 const STYLESHEET_ID = 'stylesheet.day.multiDot';
 
@@ -9,7 +10,8 @@ export default function styleConstructor(theme={}) {
     base: {
       width: 32,
       height: 32,
-      alignItems: 'center'
+      alignItems: 'center',
+      borderRadius: 16
     },
     text: {
       marginTop: 4,
@@ -23,7 +25,9 @@ export default function styleConstructor(theme={}) {
       marginTop: Platform.OS === 'android' ? 4 : 6
     },
     selected: {
-      backgroundColor: appStyle.selectedDayBackgroundColor,
+      // backgroundColor: appStyle.selectedDayBackgroundColor,
+      borderColor: appStyle.selectedDayBackgroundColor,
+      borderWidth: 2,
       borderRadius: 16
     },
     today: {
@@ -33,10 +37,20 @@ export default function styleConstructor(theme={}) {
       color: appStyle.todayTextColor
     },
     selectedText: {
-      color: appStyle.selectedDayTextColor
+      // color: appStyle.selectedDayTextColor
     },
     disabledText: {
       color: appStyle.textDisabledColor
+    },
+    dotsContainer: {
+      flexDirection: 'row',
+      backgroundColor: 'white',
+      marginTop: 2,
+      borderRadius: 5,
+      paddingTop: 1,
+      paddingRight: 2,
+      paddingBottom: 1,
+      paddingLeft: 2
     },
     dot: {
       width: 4,
